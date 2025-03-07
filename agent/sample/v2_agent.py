@@ -3,7 +3,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.agents import create_tool_calling_agent
 from langchain.agents import AgentExecutor
-from tools.simple_tools import tools
+from agent.sample.simple_tools import tools
 
 # api key load
 load_dotenv()

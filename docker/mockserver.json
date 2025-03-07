@@ -1,0 +1,41 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/products"
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "[{\"id\": 1, \"name\": \"Laptop\"}, {\"id\": 2, \"name\": \"Smartphone\"}]",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/order"
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{\"message\": \"Order placed successfully\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/batch"
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{\"message\": \"Batch job registered successfully\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+]

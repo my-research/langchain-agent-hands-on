@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from langchain_core.output_parsers.openai_tools import JsonOutputToolsParser
 from langchain_openai import ChatOpenAI
 
-from tools.simple_tools import tools
+from agent.sample.simple_tools import tools
 
 # API KEY 정보로드
 load_dotenv()
