@@ -1,3 +1,18 @@
+from dotenv import load_dotenv
+from langchain_core.output_parsers.openai_tools import JsonOutputToolsParser
+from langchain_openai import ChatOpenAI
+
+from tools.simple_tools import tools
+
+# API KEY 정보로드
+load_dotenv()
+
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# 도구 바인딩
+llm_with_tools = llm.bind_tools(tools)
+
+chain1 = llm_with_tools | JsonOutputToolsParser(tools=tools)
+
 def execute_tool_calls(tool_call_results):
     """
     도구 호출 결과를 실행하는 함수
@@ -21,3 +36,11 @@ def execute_tool_calls(tool_call_results):
         else:
             # 일치하는 도구를 찾지 못했다면 경고 메시지를 출력합니다.
             print(f"경고: {tool_name}에 해당하는 도구를 찾을 수 없습니다.")
+
+
+def run_agent(input_text):
+    tool_call_results = chain1.invoke(input_text)
+
+    chain = llm_with_tools | JsonOutputToolsParser(tools=tools) | execute_tool_calls(tool_call_results)
+
+    chain.invoke(input_text)

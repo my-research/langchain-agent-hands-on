@@ -3,7 +3,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.agents import create_tool_calling_agent
 from langchain.agents import AgentExecutor
-from tools.simple_tools import my_tools
+from tools.simple_tools import tools
 
 # api key load
 load_dotenv()
@@ -26,12 +26,12 @@ prompt = ChatPromptTemplate.from_messages(
 )
 
 # Agent 생성
-agent = create_tool_calling_agent(llm, my_tools, prompt)
+agent = create_tool_calling_agent(llm, tools, prompt)
 
 # AgentExecutor 생성
 agent_executor = AgentExecutor(
     agent=agent,
-    tools=my_tools,
+    tools=tools,
     verbose=True,
     handle_parsing_errors=True,
 )
